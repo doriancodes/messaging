@@ -7,14 +7,17 @@ import javax.persistence.Id;
 
 @Entity
 public class Message {
-    private @Id @GeneratedValue Long id;
+    private @Id
+    @GeneratedValue
+    Long id;
     private String content;
     private Long senderId;
     private Long receiverId;
 
-    public Message(){}
+    public Message() {
+    }
 
-    public Message(String content, Long senderId, Long receiverId){
+    public Message(String content, Long senderId, Long receiverId) {
         this.content = content;
         this.senderId = senderId;
         this.receiverId = receiverId;

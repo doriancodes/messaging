@@ -13,11 +13,11 @@ public class User {
 
     private String nickname;
 
-    public User(){
+    public User() {
 
     }
 
-    public User(String nickname){
+    public User(String nickname) {
         this.nickname = nickname;
     }
 
@@ -25,7 +25,7 @@ public class User {
         return id;
     }
 
-    public String getNickname(){
+    public String getNickname() {
         return nickname;
     }
 }

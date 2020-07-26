@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 //TODO add logger
 public class LoadDatabase {
     @Bean
-    CommandLineRunner initDatabase(UserRepository repository, MessageRepository msgRepository){
+    CommandLineRunner initDatabase(UserRepository repository, MessageRepository msgRepository) {
         User Bob = new User("bob");
         User Maria = new User("maria");
         User Jay = new User("jay");
