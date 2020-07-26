@@ -1,17 +1,23 @@
 package dorian.codes.messaging.messages;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "messages")
 public class Message {
     private @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     Long id;
+
+    @Column(name = "content")
     private String content;
+
+    @Column(name = "sender_id")
     private Long senderId;
+
+    @Column(name = "receiver_id")
     private Long receiverId;
 
     public Message() {

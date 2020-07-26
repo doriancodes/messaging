@@ -1,33 +1,38 @@
 package dorian.codes.messaging;
 
-import dorian.codes.messaging.messages.Message;
-import dorian.codes.messaging.messages.MessageRepository;
-import dorian.codes.messaging.users.User;
-import dorian.codes.messaging.users.UserRepository;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
-//TODO add logger
 public class LoadDatabase {
-    @Bean
-    CommandLineRunner initDatabase(UserRepository repository, MessageRepository msgRepository) {
-        User Bob = new User("bob");
-        User Maria = new User("maria");
-        User Jay = new User("jay");
 
-        Message msg1 = new Message("Hi! How are you?", 1L, 2L);
-        Message msg2 = new Message("I'm fine and you?", 2L, 1L);
-
-        return args -> {
-            System.out.println("preloading users " + repository.save(Bob));
-            System.out.println("preloading users " + repository.save(Maria));
-
-            System.out.println("preloading messages = " + msgRepository.save(msg1));
-            System.out.println("preloading messages = " + msgRepository.save(msg2));
+    private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
 
-        };
+    static void populate(JdbcTemplate jdbcTemplate){
+        log.info("Creating table");
+        jdbcTemplate.execute("DROP TABLE IF EXISTS users;");
+        jdbcTemplate.execute("DROP TABLE IF EXISTS messages;");
+
+        jdbcTemplate.execute("CREATE TABLE users(id INTEGER PRIMARY KEY, nickname TEXT);");
+        jdbcTemplate.execute("CREATE TABLE messages(id INTEGER PRIMARY KEY, content TEXT, sender_id INTEGER, receiver_id INTEGER);");
+
+
+        log.info("Inserting data...");
+
+        jdbcTemplate.update("INSERT INTO users VALUES (1, 'bob');");
+        jdbcTemplate.update("INSERT INTO users VALUES (2, 'maria');");
+        jdbcTemplate.update("INSERT INTO users VALUES (3, 'jay');");
+        jdbcTemplate.update("INSERT INTO users VALUES (4, 'valerie');");
+
+        jdbcTemplate.update("INSERT INTO messages VALUES (1, 'Hi, how are you?', 1, 2);");
+        jdbcTemplate.update("INSERT INTO messages VALUES (2, 'Fine and you?', 2, 1);");
+
+
+        log.info("... Done.");
     }
+
+
 }
