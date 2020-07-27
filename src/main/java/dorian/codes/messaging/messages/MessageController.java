@@ -24,27 +24,32 @@ public class MessageController {
         return repository.findByReceiverId(id);
     }
 
+    @GetMapping("/messages/user/{receiverId}/received/from/{senderId}")
+    List<Message> messagesReceived(@PathVariable("receiverId") Long receiverId, @PathVariable("senderId") Long senderId) {
+        return repository.findByReceiverIdFilterSender(receiverId, senderId);
+    }
+
     @GetMapping("/messages/user/{id}/sent")
     List<Message> messagesSent(@PathVariable("id") Long id) {
         return repository.findBySenderId(id);
     }
 
     @PostMapping("/messages/user/send")
-    Message sendMessage(@RequestBody SendMessage sendMessage) {
-        return repository.save(new Message(sendMessage.getContent(), sendMessage.getSenderId(), sendMessage.getReceiverId()));
+    Message sendMessage(@RequestBody ApiMessage apiMessage) {
+        return repository.save(new Message(apiMessage.getContent(), apiMessage.getSenderId(), apiMessage.getReceiverId()));
     }
 }
 
-class SendMessage {
+class ApiMessage {
     private String content;
     private Long senderId;
     private Long receiverId;
 
-    SendMessage() {
+    ApiMessage() {
 
     }
 
-    SendMessage(Long senderId, Long receiverId, String content) {
+    ApiMessage(Long senderId, Long receiverId, String content) {
         this.content = content;
         this.senderId = senderId;
         this.receiverId = receiverId;
