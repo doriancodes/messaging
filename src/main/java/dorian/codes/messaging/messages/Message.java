@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Message {
     private @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", columnDefinition = "serial")
     Long id;
 
     @Column(name = "content")

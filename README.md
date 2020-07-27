@@ -18,3 +18,4 @@ To see the app running type on the command line:
 - (optional) some front-end with the templating engine
 
 curl -d '{"nickname":"jonas"}' -H "Content-Type: application/json" -X POST http://localhost:8080/users/new
+curl -d '{"content":"Good!","senderId":1, "receiverId": 2}' -H "Content-Type: application/json" -X POST http://localhost:8080/messages/user/send
