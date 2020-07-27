@@ -16,19 +16,19 @@ public class LoadDatabase {
         jdbcTemplate.execute("DROP TABLE IF EXISTS users;");
         jdbcTemplate.execute("DROP TABLE IF EXISTS messages;");
 
-        jdbcTemplate.execute("CREATE TABLE users(id INTEGER PRIMARY KEY, nickname TEXT);");
-        jdbcTemplate.execute("CREATE TABLE messages(id INTEGER PRIMARY KEY, content TEXT, sender_id INTEGER, receiver_id INTEGER);");
+        jdbcTemplate.execute("CREATE TABLE users(id SERIAL PRIMARY KEY, nickname TEXT);");
+        jdbcTemplate.execute("CREATE TABLE messages(id SERIAL PRIMARY KEY, content TEXT, sender_id INTEGER, receiver_id INTEGER);");
 
 
         log.info("Inserting data...");
 
-        jdbcTemplate.update("INSERT INTO users VALUES (1, 'bob');");
-        jdbcTemplate.update("INSERT INTO users VALUES (2, 'maria');");
-        jdbcTemplate.update("INSERT INTO users VALUES (3, 'jay');");
-        jdbcTemplate.update("INSERT INTO users VALUES (4, 'valerie');");
+        jdbcTemplate.update("INSERT INTO users (nickname) VALUES ('bob');");
+        jdbcTemplate.update("INSERT INTO users (nickname) VALUES ('maria');");
+        jdbcTemplate.update("INSERT INTO users (nickname) VALUES ('jay');");
+        jdbcTemplate.update("INSERT INTO users (nickname) VALUES ('valerie');");
 
-        jdbcTemplate.update("INSERT INTO messages VALUES (1, 'Hi, how are you?', 1, 2);");
-        jdbcTemplate.update("INSERT INTO messages VALUES (2, 'Fine and you?', 2, 1);");
+        jdbcTemplate.update("INSERT INTO messages (content, sender_id, receiver_id) VALUES ('Hi, how are you?', 1, 2);");
+        jdbcTemplate.update("INSERT INTO messages (content, sender_id, receiver_id) VALUES ('Fine and you?', 2, 1);");
 
 
         log.info("... Done.");

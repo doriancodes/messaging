@@ -1,6 +1,8 @@
 package dorian.codes.messaging.users;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,4 +20,30 @@ public class UserController {
         return repository.findAll();
     }
 
+    @PostMapping("/users/new")
+    User newUser(@RequestBody UserNickname userNickname){
+
+        return repository.save(new User(userNickname.getNickname()));
+    }
+
+}
+
+class UserNickname {
+    private String nickname;
+
+    public UserNickname(){
+
+    }
+
+    public UserNickname(String nickname){
+        this.nickname = nickname;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 }
