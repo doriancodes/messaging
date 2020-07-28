@@ -1,6 +1,43 @@
 # Demo Messaging App
 
 Backend for a Messaging Application in Spring and Java.
+
+The App has 2 main modules, users and messages. Every module is so structured
+to have a repository, a service and a controller layer respectively.
+This is a tree representation of the folder structure:
+```$xslt
+.
+├── admin
+│   └── AdminController.java
+├── HelloWorldController.java
+├── LoadDatabase.java
+├── messages
+│   ├── controllers
+│   │   └── MessageController.java
+│   ├── models
+│   │   ├── ApiMessage.java
+│   │   └── Message.java
+│   ├── repositories
+│   │   └── MessageRepository.java
+│   └── services
+│       ├── impl
+│       │   └── MessageServiceImpl.java
+│       └── MessageService.java
+├── MessagingApplication.java
+└── users
+    ├── controllers
+    │   └── UserController.java
+    ├── models
+    │   ├── User.java
+    │   └── UserNickname.java
+    ├── repositories
+    │   └── UserRepository.java
+    └── services
+        ├── impl
+        │   └── UserServiceImpl.java
+        └── UserService.java
+
+```
 The App starts already with some preloaded data that you can explore 
 through a postgres client with the following configuration:
 ```$xslt
