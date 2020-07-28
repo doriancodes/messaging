@@ -4,9 +4,9 @@ Backend for a Messaging Application in Spring and Java.
 The App starts already with some preloaded data that you can explore 
 through a postgres client with the following configuration:
 ```$xslt
-spring.datasource.url=jdbc:postgresql://localhost:5432/messaging
-spring.datasource.username=db
-spring.datasource.password=admin
+url = jdbc:postgresql://localhost:5432/messaging
+username = db
+password = admin
 ```
 as described in the `application.properties` file.
 
