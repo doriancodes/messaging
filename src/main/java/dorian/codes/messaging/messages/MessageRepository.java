@@ -1,5 +1,6 @@
 package dorian.codes.messaging.messages;
 
+import dorian.codes.messaging.messages.models.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

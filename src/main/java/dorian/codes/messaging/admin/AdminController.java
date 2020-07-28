@@ -1,5 +1,7 @@
 package dorian.codes.messaging.admin;
 
+import dorian.codes.messaging.messages.MessageRepository;
+import dorian.codes.messaging.messages.models.Message;
 import dorian.codes.messaging.users.User;
 import dorian.codes.messaging.users.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +14,22 @@ public class AdminController {
 
     private final UserRepository uRepository;
 
+    private final MessageRepository msgRepository;
 
-    public AdminController(UserRepository userRepository){
+
+    public AdminController(UserRepository userRepository, MessageRepository msgRepository) {
         this.uRepository = userRepository;
+        this.msgRepository = msgRepository;
     }
 
     @GetMapping("/admin/users")
-    List<User> all() {
+    List<User> allUsers() {
         return uRepository.findAll();
     }
+
+    @GetMapping("/admin/messages")
+    List<Message> allMessages() {
+        return msgRepository.findAll();
+    }
+
 }
