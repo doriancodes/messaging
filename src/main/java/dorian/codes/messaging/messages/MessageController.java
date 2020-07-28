@@ -35,8 +35,9 @@ public class MessageController {
     }
 
     @PostMapping("/messages/user/send")
-    Message sendMessage(@RequestBody ApiMessage apiMessage) {
-        return repository.save(new Message(apiMessage.getContent(), apiMessage.getSenderId(), apiMessage.getReceiverId()));
+    ApiMessage sendMessage(@RequestBody ApiMessage apiMessage) {
+        Message newMessage = repository.save(new Message(apiMessage.getContent(), apiMessage.getSenderId(), apiMessage.getReceiverId()));
+        return apiMessage;
     }
 }
 

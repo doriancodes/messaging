@@ -28,7 +28,7 @@ public class LoadDatabase {
         jdbcTemplate.execute("DROP TABLE IF EXISTS users CASCADE;");
         jdbcTemplate.execute("DROP TABLE IF EXISTS messages CASCADE");
 
-        jdbcTemplate.execute("CREATE TABLE users(id SERIAL PRIMARY KEY, nickname TEXT);");
+        jdbcTemplate.execute("CREATE TABLE users(id SERIAL PRIMARY KEY, nickname TEXT UNIQUE);");
         jdbcTemplate.execute("CREATE TABLE messages(" +
                 "id SERIAL PRIMARY KEY, " +
                 "content TEXT, " +

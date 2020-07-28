@@ -32,12 +32,6 @@ public class UserControllerTests {
     @MockBean
     private UserRepository userRepository;
 
-    @Test
-    public void test1() throws Exception {
-
-
-        mvc.perform(MockMvcRequestBuilders.get("/users")).andExpect(status().isOk());
-    }
 
     @Test
     public void testCreate() throws Exception {
@@ -48,7 +42,7 @@ public class UserControllerTests {
                 .post("/users/new")
                 .content(asJsonString(alex))
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()); //TODO SHOULD RETURN IS CREATED
+                .andExpect(status().isOk());
 
     }
 
