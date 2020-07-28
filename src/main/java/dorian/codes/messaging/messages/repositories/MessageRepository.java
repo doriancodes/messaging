@@ -1,4 +1,4 @@
-package dorian.codes.messaging.messages;
+package dorian.codes.messaging.messages.repositories;
 
 import dorian.codes.messaging.messages.models.Message;
 import org.springframework.data.jpa.repository.JpaRepository;

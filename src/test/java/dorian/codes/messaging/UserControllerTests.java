@@ -1,9 +1,9 @@
 package dorian.codes.messaging;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dorian.codes.messaging.users.UserController;
-import dorian.codes.messaging.users.UserNickname;
-import dorian.codes.messaging.users.UserRepository;
+import dorian.codes.messaging.users.controllers.UserController;
+import dorian.codes.messaging.users.models.UserNickname;
+import dorian.codes.messaging.users.repositories.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package dorian.codes.messaging.admin;
 
-import dorian.codes.messaging.messages.MessageRepository;
 import dorian.codes.messaging.messages.models.Message;
-import dorian.codes.messaging.users.User;
-import dorian.codes.messaging.users.UserRepository;
+import dorian.codes.messaging.messages.repositories.MessageRepository;
+import dorian.codes.messaging.users.models.User;
+import dorian.codes.messaging.users.repositories.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

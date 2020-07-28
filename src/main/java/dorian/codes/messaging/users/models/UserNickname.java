@@ -1,4 +1,4 @@
-package dorian.codes.messaging.users;
+package dorian.codes.messaging.users.models;
 
 public class UserNickname {
     private String nickname;

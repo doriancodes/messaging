@@ -1,4 +1,4 @@
-package dorian.codes.messaging.users;
+package dorian.codes.messaging.users.models;
 
 import javax.persistence.*;
 

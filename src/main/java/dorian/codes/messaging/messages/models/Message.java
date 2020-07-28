@@ -48,4 +48,8 @@ public class Message {
     public Long getReceiverId() {
         return receiverId;
     }
+
+    public ApiMessage toApiMessage() {
+        return new ApiMessage(this.content, this.senderId, this.receiverId);
+    }
 }

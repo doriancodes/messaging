@@ -9,7 +9,7 @@ public class ApiMessage {
 
     }
 
-    ApiMessage(Long senderId, Long receiverId, String content) {
+    public ApiMessage(String content, Long senderId, Long receiverId ) {
         this.content = content;
         this.senderId = senderId;
         this.receiverId = receiverId;
@@ -38,4 +38,6 @@ public class ApiMessage {
     public void setContent(String content) {
         this.content = content;
     }
+
+
 }

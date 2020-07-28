@@ -117,7 +117,7 @@ curl  http://localhost:8080/messages/user/1/received
 
 should return
 ```$xslt
-[{"id":2,"content":"Fine and you?","senderId":2,"receiverId":1}]
+[{"content":"Fine and you?","senderId":2,"receiverId":1}]
 ```
 ---
 ### GET /messages/user/{id}/sent
@@ -130,7 +130,7 @@ curl  http://localhost:8080/messages/user/1/sent
 
 should return
 ```$xslt
-[{"id":1,"content":"Hi, how are you?","senderId":1,"receiverId":2}]
+[{"content":"Hi, how are you?","senderId":1,"receiverId":2}]
 ```
 ---
 ### GET "/messages/user/{receiverId}/received/from/{senderId}"
@@ -143,7 +143,7 @@ curl  http://localhost:8080/messages/user/1/received/from/2
 
 should return
 ```$xslt
-[{"id":2,"content":"Fine and you?","senderId":2,"receiverId":1}]
+[{"content":"Fine and you?","senderId":2,"receiverId":1}]
 ```
 ## AdminController
 
@@ -189,8 +189,6 @@ should return
 
 # TODO
 - Add tests (unit and integration)
-- add more structure inside the modules and a service layer between repositories 
-and controllers
 
 ## Proposed improvements
 - Add CI, e.g. through travis ci
