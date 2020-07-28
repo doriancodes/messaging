@@ -13,11 +13,30 @@ public class LoadDatabase {
 
     static void populate(JdbcTemplate jdbcTemplate){
         log.info("Creating table");
-        jdbcTemplate.execute("DROP TABLE IF EXISTS users;");
-        jdbcTemplate.execute("DROP TABLE IF EXISTS messages;");
+
+        String senderIdFKConstraint = "CONSTRAINT fk_sender_id " +
+                "FOREIGN KEY(sender_id) " +
+                "REFERENCES users(id) " +
+                "ON DELETE SET NULL," ;
+
+        String receiverIdFKConstraint = " CONSTRAINT fk_receiver_id " +
+                "FOREIGN KEY(receiver_id) " +
+                "REFERENCES users(id) " +
+                "ON DELETE SET NULL" ;
+
+
+        jdbcTemplate.execute("DROP TABLE IF EXISTS users CASCADE;");
+        jdbcTemplate.execute("DROP TABLE IF EXISTS messages CASCADE");
 
         jdbcTemplate.execute("CREATE TABLE users(id SERIAL PRIMARY KEY, nickname TEXT);");
-        jdbcTemplate.execute("CREATE TABLE messages(id SERIAL PRIMARY KEY, content TEXT, sender_id INTEGER, receiver_id INTEGER);");
+        jdbcTemplate.execute("CREATE TABLE messages(" +
+                "id SERIAL PRIMARY KEY, " +
+                "content TEXT, " +
+                "sender_id INTEGER, " +
+                "receiver_id INTEGER," +
+                senderIdFKConstraint +
+                receiverIdFKConstraint +
+                ");");
 
 
         log.info("Inserting data...");
