@@ -2,7 +2,9 @@ package dorian.codes.messaging.messages.controllers;
 
 import dorian.codes.messaging.messages.models.ApiMessage;
 import dorian.codes.messaging.messages.services.MessageService;
+import dorian.codes.messaging.validation.ForbiddenException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +32,11 @@ public class MessageController {
     }
 
     @PostMapping("/messages/user/send")
+    @ResponseStatus(HttpStatus.CREATED)
     ApiMessage sendMessage(@RequestBody ApiMessage apiMessage) {
+        if (apiMessage.getSenderId() == apiMessage.getReceiverId()){
+            throw new ForbiddenException("A user can't send a message to themselves!");
+        }
         return messageService.save(apiMessage);
     }
 }

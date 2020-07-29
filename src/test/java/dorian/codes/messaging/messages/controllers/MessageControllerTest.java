@@ -72,9 +72,22 @@ public class MessageControllerTest extends AbstractTest {
                 .content(inputJson)).andReturn();
 
         int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status); //TODO post should return 201
+        assertEquals(201, status);
         String content = mvcResult.getResponse().getContentAsString();
         assertEquals(content, "{\"content\":\"Good!\",\"senderId\":1,\"receiverId\":2}");
+    }
+
+    @Test
+    public void testSendMessageNotAllowed() throws Exception {
+        String uri = "/messages/user/send";
+        ApiMessage newMessage = new ApiMessage("Good!", 1L, 1L);
+        String inputJson = super.mapToJson(newMessage);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(403, status);
     }
 
 }

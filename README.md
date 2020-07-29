@@ -109,7 +109,6 @@ should return
 
 As users nicknames are unique if I try to save a new user with a nickname that is already in the database I get an error.
 
-**Please note**: This endpoint should return a more graceful message when a nickname is not available 
 
 
 ## MessageController
@@ -141,7 +140,7 @@ should return
 ```$xslt
 {"content":"Good!","senderId":1,"receiverId":2}
 ```
-**Please note**: this endpoint shouldn't allow you to send a message to yourself.
+**Please note**: this endpoint doesn't allow you to send a message to yourself.
 
 ---
 ### GET /messages/user/{id}/received
@@ -224,14 +223,16 @@ should return
 
 **Please note**: in a real life scenario we probably don't want to grant an user the access to all messages in the system as this is ethically questionable. This is only meant as theoretical exercise.
 
-# TODO
-- Add tests (unit and integration)
 
 ## Proposed improvements
 - Add CI, e.g. through travis ci
 - Add dev and prod configurations
+- set up a different database for testing
 - Add message queue
-- add data validation, customized exceptions and check that endpoints report the right status
+- ideally integrate API with postman
 
+## Problems
+Apparently `maven` doesn't recognize the tests in the `test`folder. To execute 
+the tests please use an IDE (e.g. IntelliJ IDEA)
 
 

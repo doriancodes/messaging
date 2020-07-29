@@ -30,8 +30,22 @@ public class UserControllerTest extends AbstractTest {
                 .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 
         int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status); //TODO it should return 201 instead of 200
+        assertEquals(201, status);
         String content = mvcResult.getResponse().getContentAsString();
         assertEquals(content, "{\"nickname\":\"alex\"}");
+    }
+
+    @Test
+    public void testCreateNewUserDuplicateNickname() throws Exception {
+        String uri = "/users/new";
+        UserNickname newUser = new UserNickname("bob");
+
+
+        String inputJson = super.mapToJson(newUser);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(403, status);
     }
 }
