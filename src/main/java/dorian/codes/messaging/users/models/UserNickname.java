@@ -3,11 +3,11 @@ package dorian.codes.messaging.users.models;
 public class UserNickname {
     private String nickname;
 
-    public UserNickname(){
+    public UserNickname() {
 
     }
 
-    public UserNickname(String nickname){
+    public UserNickname(String nickname) {
         this.nickname = nickname;
     }
 

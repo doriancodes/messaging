@@ -34,7 +34,7 @@ public class MessageController {
     @PostMapping("/messages/user/send")
     @ResponseStatus(HttpStatus.CREATED)
     ApiMessage sendMessage(@RequestBody ApiMessage apiMessage) {
-        if (apiMessage.getSenderId() == apiMessage.getReceiverId()){
+        if (apiMessage.getSenderId() == apiMessage.getReceiverId()) {
             throw new ForbiddenException("A user can't send a message to themselves!");
         }
         return messageService.save(apiMessage);

@@ -24,18 +24,20 @@ This is a tree representation of the folder structure:
 │       │   └── MessageServiceImpl.java
 │       └── MessageService.java
 ├── MessagingApplication.java
-└── users
-    ├── controllers
-    │   └── UserController.java
-    ├── models
-    │   ├── User.java
-    │   └── UserNickname.java
-    ├── repositories
-    │   └── UserRepository.java
-    └── services
-        ├── impl
-        │   └── UserServiceImpl.java
-        └── UserService.java
+├── users
+│   ├── controllers
+│   │   └── UserController.java
+│   ├── models
+│   │   ├── User.java
+│   │   └── UserNickname.java
+│   ├── repositories
+│   │   └── UserRepository.java
+│   └── services
+│       ├── impl
+│       │   └── UserServiceImpl.java
+│       └── UserService.java
+└── validation
+    └── ForbiddenException.java
 
 ```
 The App starts already with some preloaded data that you can explore 

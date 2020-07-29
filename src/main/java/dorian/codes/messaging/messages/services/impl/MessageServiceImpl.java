@@ -36,7 +36,7 @@ class MessageServiceImpl implements MessageService {
 
     @Override
     public ApiMessage save(ApiMessage apiMessage) {
-       Message newMessage =  new Message(apiMessage.getContent(), apiMessage.getSenderId(), apiMessage.getReceiverId());
+        Message newMessage = new Message(apiMessage.getContent(), apiMessage.getSenderId(), apiMessage.getReceiverId());
         return messageRepository.save(newMessage).toApiMessage();
     }
 

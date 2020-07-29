@@ -11,18 +11,18 @@ public class LoadDatabase {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
 
-    static void populate(JdbcTemplate jdbcTemplate){
+    static void populate(JdbcTemplate jdbcTemplate) {
         log.info("Creating table");
 
         String senderIdFKConstraint = "CONSTRAINT fk_sender_id " +
                 "FOREIGN KEY(sender_id) " +
                 "REFERENCES users(id) " +
-                "ON DELETE SET NULL," ;
+                "ON DELETE SET NULL,";
 
         String receiverIdFKConstraint = " CONSTRAINT fk_receiver_id " +
                 "FOREIGN KEY(receiver_id) " +
                 "REFERENCES users(id) " +
-                "ON DELETE SET NULL" ;
+                "ON DELETE SET NULL";
 
 
         jdbcTemplate.execute("DROP TABLE IF EXISTS users CASCADE;");
